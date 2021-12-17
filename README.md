@@ -1,4 +1,5 @@
 # WSB-autosetup
+# **Disclaimer: This has only been tested on Windows 11!**
 Generate a config file for Windows Sandbox (Also automatically installs the 2010-2022 Visual C++ Redistributables)
 > This assumes your user profile is on the C:\ drive. **THIS WILL FAIL IF IT ISN'T.**
 
