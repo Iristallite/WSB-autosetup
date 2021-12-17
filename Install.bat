@@ -14,3 +14,4 @@ C:\cpp\2012x64.exe /install /passive /norestart
 C:\cpp\2013x64.exe /install /passive /norestart
 C:\cpp\20152022x64.exe /install /passive /norestart
 C:\WSB-autosetup\vbs\cpp-x64-fin.vbs
+C:\WSB-autosetup\vbs\cpp-finished.vbs
