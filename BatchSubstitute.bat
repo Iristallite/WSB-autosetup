@@ -1,10 +1,9 @@
-@echo off
 REM -- Prepare the Command Processor --
 SETLOCAL ENABLEEXTENSIONS
 SETLOCAL DISABLEDELAYEDEXPANSION
 
-::BatchSubstitude - parses a File line by line and replaces a substring"
-::syntax: BatchSubstitude.bat OldStr NewStr File
+::BatchSubstitute - parses a File line by line and replaces a substring"
+::syntax: BatchSubstitute.bat OldStr NewStr File
 ::          OldStr [in] - string to be replaced
 ::          NewStr [in] - string to replace with
 ::          File   [in] - file to be parsed
