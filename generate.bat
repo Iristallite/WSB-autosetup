@@ -1,3 +1,3 @@
 @echo off
-set WSBGENPROG=03
+set WSBGENPROG=00
 generator.bat
