@@ -27,4 +27,7 @@ Each folder correspondsd to the max amount of RAM that will be allocated.
 
 Clipboard redirection is always on.
 
+## Attributions for third-party code
+BatchSubstitute.bat is from https://www.dostips.com/DtCodeBatchFiles.php#Batch.FindAndReplace
+
 ### (I hope I'm not violating any terms by including the Visual C++ Redistributables in here. I mean, they're called "Redistributables", so I'm assuming it's okay. If anybody from Microsoft isn't okay with this, just shoot me an email.)
