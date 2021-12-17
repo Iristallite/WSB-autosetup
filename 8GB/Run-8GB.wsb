@@ -9,7 +9,7 @@
  <MemoryInMB>8192</MemoryInMB>
  <MappedFolders>
   <MappedFolder>
-   <HostFolder>C:\Users\\Documents\GitHub\WSB-autosetup</HostFolder>
+   <HostFolder>C:\Users\USERNAME\Documents\GitHub\WSB-autosetup</HostFolder>
    <SandboxFolder>C:\WSB-autosetup</SandboxFolder>
    <ReadOnly>True</ReadOnly>
   </MappedFolder>
