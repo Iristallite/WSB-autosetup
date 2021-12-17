@@ -62,7 +62,7 @@ exit
 echo The script needs to restart %WSBGENPROG% more times to complete generating the WSB file.
 echo After the script exits, run generate.bat to continue
 pause
-if %WSBGENPROG% equ 3 goto Breakoff2 else if %WSBGENPROG% equ 2 goto Breakoff3 else if %WSBGENPROG% equ 1 goto Breakoff4 else if %WSBGENPROG% equ 5 goto CompleteCopy else goto errorlevel
+if %WSBGENPROG% equ 0 goto Breakoff1 else if %WSBGENPROG% equ 3 goto Breakoff2 else if %WSBGENPROG% equ 2 goto Breakoff3 else if %WSBGENPROG% equ 1 goto Breakoff4 else if %WSBGENPROG% equ 5 goto CompleteCopy else goto errorlevel
 
 :Error
 echo THE SCRIPT BROKE
