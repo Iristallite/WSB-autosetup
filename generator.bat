@@ -64,7 +64,9 @@ exit
 
 :Restart
 call :Check05
-echo The script needs to restart %WSBGENPROG% more times to complete generating the WSB file.
+call :CheckPlural
+call :RestartCount
+echo The script needs to restart %RESTARTCOUNT% more %PLURAL% to complete generating the WSB file.
 echo After the script exits, run generate.bat again to continue.
 pause
 if %WSBGENPROG% equ 04 (goto Breakoff1) else (goto Check03)
@@ -74,8 +76,16 @@ if %WSBGENPROG% equ 03 (goto Breakoff2) else (goto Check02)
 if %WSBGENPROG% equ 02 (goto Breakoff3) else (goto Check01)
 :Check01
 if %WSBGENPROG% equ 01 (goto Breakoff4) else (goto Check05)
+
 :Check05
 if %WSBGENPROG% equ 05 (goto CompleteCopy) else (exit /b)
+
+:CheckPlural
+if %WSBGENPROG% equ 01 (set PLURAL=time) else (set PLURAL=times)
+exit /b
+
+:RestartCount
+
 
 :Error
 echo THE SCRIPT BROKE
