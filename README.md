@@ -1,5 +1,5 @@
 # WSB-autosetup
-Generates a WSB script that starts Windows Sandbox and automatically installs 2010-2022 Visual C++ Redistributables
+Generate a config file for Windows Sandbox (Also automatically installs the 2010-2022 Visual C++ Redistributables)
 > This assumes your user profile is on the C:\ drive. **THIS WILL FAIL IF IT ISN'T.**
 
 ## Instructions (Github Desktop)
