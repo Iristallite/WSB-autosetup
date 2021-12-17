@@ -14,20 +14,22 @@ if exist temp rmdir temp temp else mkdir temp
 :: Set variable
 del generate.bat
 echo @echo off >> generate.bat
-echo set WSBGENPROG="3" >> generate.bat
+echo set WSBGENPROG=3 >> generate.bat
 echo generator.bat >> generate.bat
+if %WSBGENPROG% neq 4 set WSBGENPROG=4
+goto Restart
 :Breakoff1
 BatchSubstitute.bat "WSBUSERNAME" %WSBUSERNAME% ungenerated.wsb >> temp\temp.wsb
 :Breakoff2
 del generate.bat
 echo @echo off >> generate.bat
-echo set WSBGENPROG="2" >> generate.bat
+echo set WSBGENPROG=2 >> generate.bat
 echo generator.bat >> generate.bat
 BatchSubstitute.bat "WSBVGPU" %WSBVGPU% temp\temp.wsb >> temp\temp2.wsb
 :Breakoff3
 del generate.bat
 echo @echo off >> generate.bat
-echo set WSBGENPROG="1" >> generate.bat
+echo set WSBGENPROG=1 >> generate.bat
 echo generator.bat >> generate.bat
 BatchSubstitute.bat "WSBNET" %WSBNET% temp\temp2.wsb >> temp\temp3.wsb
 :Breakoff4
@@ -53,13 +55,10 @@ echo Filename: %WSBFILENAME%
 pause
 exit
 :Restart
-del generate.bat
-echo @echo off >> generate.bat
-echo set 
 echo The script needs to restart %WSBGENPROG% more times to complete generating the WSB file.
 echo After the script exits, run generate.bat to continue
 pause
-if %WSBGENPROG%=3 goto Breakoff2 else if %WSBGENPROG%=2 goto Breakoff3 else if %WSBGENPROG%=1 goto Breakoff4 else if %WSBGENPROG%=done goto CompleteCopy else goto errorlevel
+if %WSBGENPROG%=1 exit else if %WSBGENPROG%=3 goto Breakoff2 else if %WSBGENPROG%=2 goto Breakoff3 else if %WSBGENPROG%=1 goto Breakoff4 else if %WSBGENPROG%=done goto CompleteCopy else goto errorlevel
 
 :Error
 echo THE SCRIPT BROKE
