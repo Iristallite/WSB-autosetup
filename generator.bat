@@ -1,5 +1,5 @@
 @echo on
-if %WSBGENPROG% gtr 0 goto Restart else goto Main
+if %WSBGENPROG% neq 00 goto Restart else goto Main
 
 :Main
 dir /w C:\Users
@@ -13,42 +13,42 @@ set /p WSBRAM="Maximum RAM in MB: "
 if exist temp goto SetVar else mkdir temp
 :SetVar
 del generate.bat
-echo @echo off>> generate.bat
-echo set WSBGENPROG=03>> generate.bat
-echo generator.bat>> generate.bat
+echo @echo off>generate.bat
+echo set WSBGENPROG=03>generate.bat
+echo generator.bat>generate.bat
 set WSBGENPROG=04
 goto Restart
 :Breakoff1
 del generate.bat
-echo @echo off>>generate.bat
-echo set WSBGENPROG=03>> generate.bat
-echo generator.bat>> generate.bat
-BatchSubstitute.bat "WSBUSERNAME" %WSBUSERNAME% ungenerated.wsb >> temp\temp.wsb
+echo @echo off>generate.bat
+echo set WSBGENPROG=03>generate.bat
+echo generator.bat>generate.bat
+BatchSubstitute.bat "WSBUSERNAME" %WSBUSERNAME% ungenerated.wsb>temp\temp.wsb
 :Breakoff2
 del generate.bat
-echo @echo off>> generate.bat
-echo set WSBGENPROG=02>> generate.bat
-echo generator.bat>> generate.bat
-BatchSubstitute.bat "WSBVGPU" %WSBVGPU% temp\temp.wsb >> temp\temp2.wsb
+echo @echo off>generate.bat
+echo set WSBGENPROG=02>generate.bat
+echo generator.bat>generate.bat
+BatchSubstitute.bat "WSBVGPU" %WSBVGPU% temp.wsb>temp\temp2.wsb
 :Breakoff3
 del generate.bat
-echo @echo off>> generate.bat
-echo set WSBGENPROG=01>> generate.bat
-echo generator.bat>> generate.bat
-BatchSubstitute.bat "WSBNET" %WSBNET% temp\temp2.wsb >> temp\temp3.wsb
+echo @echo off> generate.bat
+echo set WSBGENPROG=01> generate.bat
+echo generator.bat> generate.bat
+BatchSubstitute.bat "WSBNET" %WSBNET% temp2.wsb>temp\temp3.wsb
 :Breakoff4
 del generate.bat
-echo @echo off>> generate.bat
-echo set WSBGENPROG=05>> generate.bat
-echo generator.bat>> generate.bat
-BatchSubstitute.bat "WSBRAM" %WSBRAM% temp\temp3.wsb >> temp\temp4.wsb
+echo @echo off> generate.bat
+echo set WSBGENPROG=05> generate.bat
+echo generator.bat> generate.bat
+BatchSubstitute.bat "WSBRAM" %WSBRAM% temp3.wsb>temp\temp4.wsb
 :CompleteCopy
 copy temp\temp4.wsb .\
 rmdir temp
 del generate.bat
-echo @echo off>> generate.bat
-echo set WSBGENPROG=00>> generate.bat
-echo generator.bat>> generate.bat
+echo @echo off>generate.bat
+echo set WSBGENPROG=00>generate.bat
+echo generator.bat>generate.bat
 if %WSBVGPU%=ENABLE set FNVGPU=vGPU- else set FNVGPU=
 if %WSBNET%=ENABLE set FNNET=Net- else set FNNET=
 rename temp4.wsb "Run-%FNVGPU%%FNNET%%WSBRAM%MB.wsb"
