@@ -51,8 +51,8 @@ copy temp\temp4.wsb .\
 del /f temp\*.wsb
 call :clean-generate
 cls
-if %WSBVGPU% equ ENABLE (set FNVGPU=vGPU-) else (set FNVGPU=)
-if %WSBNET% equ ENABLE (set FNNET=Net-) else (set FNNET=)
+if %WSBVGPU% equ Enable (set FNVGPU=vGPU-) else (set FNVGPU=)
+if %WSBNET% equ Enable (set FNNET=Net-) else (set FNNET=)
 rename temp4.wsb "Run-%FNVGPU%%FNNET%%WSBRAM%MB.wsb"
 set WSBFILENAME=Run-%FNVGPU%%FNNET%%WSBRAM%MB.wsb
 
