@@ -1,4 +1,4 @@
-@echo on
+@echo off
 if %WSBGENPROG% geq 1 goto Restart else if %WSBGENPROG%="start" goto Main else goto Error
 
 :Main
@@ -10,41 +10,45 @@ echo Do you want Networking ENABLE or DISABLE?
 set /p WSBNET="Networking: "
 echo How much RAM (in MB) do you want to allow the Sandbox to consume?
 set /p WSBRAM="Maximum RAM in MB: "
-if exist temp rmdir temp temp else mkdir temp 
-:: Set variable
+if exist temp goto SetVar else mkdir temp 
+:SetVar
 del generate.bat
-echo @echo off >> generate.bat
-echo set WSBGENPROG=3 >> generate.bat
-echo generator.bat >> generate.bat
+echo @echo off>> generate.bat
+echo set WSBGENPROG=3>> generate.bat
+echo generator.bat>> generate.bat
 if %WSBGENPROG% neq 4 set WSBGENPROG=4
 goto Restart
 :Breakoff1
+del generate.bat
+echo @echo off>>generate.bat
+echo set WSBGENPROG=3>> generate.bat
+echo generator.bat>> generate.bat
 BatchSubstitute.bat "WSBUSERNAME" %WSBUSERNAME% ungenerated.wsb >> temp\temp.wsb
 :Breakoff2
 del generate.bat
-echo @echo off >> generate.bat
-echo set WSBGENPROG=2 >> generate.bat
-echo generator.bat >> generate.bat
+echo @echo off>> generate.bat
+echo set WSBGENPROG=2>> generate.bat
+echo generator.bat>> generate.bat
 BatchSubstitute.bat "WSBVGPU" %WSBVGPU% temp\temp.wsb >> temp\temp2.wsb
 :Breakoff3
 del generate.bat
-echo @echo off >> generate.bat
-echo set WSBGENPROG=1 >> generate.bat
-echo generator.bat >> generate.bat
+echo @echo off>> generate.bat
+echo set WSBGENPROG=1>> generate.bat
+echo generator.bat>> generate.bat
 BatchSubstitute.bat "WSBNET" %WSBNET% temp\temp2.wsb >> temp\temp3.wsb
 :Breakoff4
 del generate.bat
-echo @echo off >> generate.bat
-echo set WSBGENPROG="done" >> generate.bat
-echo generator.bat >> generate.bat
+echo @echo off>> generate.bat
+echo set WSBGENPROG="done">> generate.bat
+echo generator.bat>> generate.bat
 BatchSubstitute.bat "WSBRAM" %WSBRAM% temp\temp3.wsb >> temp\temp4.wsb
 :CompleteCopy
 copy temp\temp4.wsb .\
 rmdir temp
 del generate.bat
-echo @echo off >> generate.bat
-echo set WSBGENPROG="start" >> generate.bat
-echo generator.bat >> generate.bat
+echo @echo off>> generate.bat
+echo set WSBGENPROG="start">> generate.bat
+echo generator.bat>> generate.bat
 if %WSBVGPU%=ENABLE set FNVGPU="vGPU-" else set FNVGPU=""
 if %WSBNET%=ENABLE set FNNET="Net-" else set FNNET=""
 rename temp4.wsb "Run-%FNVGPU%%FNNET%%WSBRAM%MB.wsb"
@@ -58,7 +62,7 @@ exit
 echo The script needs to restart %WSBGENPROG% more times to complete generating the WSB file.
 echo After the script exits, run generate.bat to continue
 pause
-if %WSBGENPROG%=1 exit else if %WSBGENPROG%=3 goto Breakoff2 else if %WSBGENPROG%=2 goto Breakoff3 else if %WSBGENPROG%=1 goto Breakoff4 else if %WSBGENPROG%=done goto CompleteCopy else goto errorlevel
+if %WSBGENPROG%="3" goto Breakoff2 else if %WSBGENPROG%="2" goto Breakoff3 else if %WSBGENPROG%="1" goto Breakoff4 else if %WSBGENPROG%="done" goto CompleteCopy else goto errorlevel
 
 :Error
 echo THE SCRIPT BROKE
