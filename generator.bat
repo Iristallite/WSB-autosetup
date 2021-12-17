@@ -14,32 +14,32 @@ if exist temp goto SetVar else mkdir temp
 :SetVar
 del generate.bat
 echo @echo off>> generate.bat
-echo set WSBGENPROG=3 >> generate.bat
+echo set WSBGENPROG=03>> generate.bat
 echo generator.bat>> generate.bat
-set WSBGENPROG=4
+set WSBGENPROG=04
 goto Restart
 :Breakoff1
 del generate.bat
 echo @echo off>>generate.bat
-echo set WSBGENPROG=3 >> generate.bat
+echo set WSBGENPROG=03>> generate.bat
 echo generator.bat>> generate.bat
 BatchSubstitute.bat "WSBUSERNAME" %WSBUSERNAME% ungenerated.wsb >> temp\temp.wsb
 :Breakoff2
 del generate.bat
 echo @echo off>> generate.bat
-echo set WSBGENPROG=2 >> generate.bat
+echo set WSBGENPROG=02>> generate.bat
 echo generator.bat>> generate.bat
 BatchSubstitute.bat "WSBVGPU" %WSBVGPU% temp\temp.wsb >> temp\temp2.wsb
 :Breakoff3
 del generate.bat
 echo @echo off>> generate.bat
-echo set WSBGENPROG=1 >> generate.bat
+echo set WSBGENPROG=01>> generate.bat
 echo generator.bat>> generate.bat
 BatchSubstitute.bat "WSBNET" %WSBNET% temp\temp2.wsb >> temp\temp3.wsb
 :Breakoff4
 del generate.bat
 echo @echo off>> generate.bat
-echo set WSBGENPROG=5 >> generate.bat
+echo set WSBGENPROG=05>> generate.bat
 echo generator.bat>> generate.bat
 BatchSubstitute.bat "WSBRAM" %WSBRAM% temp\temp3.wsb >> temp\temp4.wsb
 :CompleteCopy
@@ -47,7 +47,7 @@ copy temp\temp4.wsb .\
 rmdir temp
 del generate.bat
 echo @echo off>> generate.bat
-echo set WSBGENPROG=0 >> generate.bat
+echo set WSBGENPROG=00>> generate.bat
 echo generator.bat>> generate.bat
 if %WSBVGPU%=ENABLE set FNVGPU=vGPU- else set FNVGPU=
 if %WSBNET%=ENABLE set FNNET=Net- else set FNNET=
@@ -62,7 +62,7 @@ exit
 echo The script needs to restart %WSBGENPROG% more times to complete generating the WSB file.
 echo After the script exits, run generate.bat to continue
 pause
-if %WSBGENPROG% equ 4 goto Breakoff1 else if %WSBGENPROG%="3 " goto Breakoff2 else if %WSBGENPROG%="2 " goto Breakoff3 else if %WSBGENPROG%="1 " goto Breakoff4 else if %WSBGENPROG%="5 " goto CompleteCopy else goto errorlevel
+if %WSBGENPROG%=04 goto Breakoff1 else if %WSBGENPROG%=03  goto Breakoff2 else if %WSBGENPROG%=02  goto Breakoff3 else if %WSBGENPROG%=01  goto Breakoff4 else if %WSBGENPROG%=05  goto CompleteCopy else goto errorlevel
 
 :Error
 echo THE SCRIPT BROKE
