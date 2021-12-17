@@ -18,13 +18,6 @@ Not recommended.
 5. Run "generate.bat" and follow the instructions
 6. (Optional) Copy or create a shortcut to the .wsb file wherever you'd like
 
-## Glossary
-Each folder correspondsd to the max amount of RAM that will be allocated.
-`Run-xGB.wsb` Starts with vGPU and Networking disabled.
-`Run-Net-xGB.wsb` Starts with Networking enabled and vGPU disabled.
-`Run-vGPU-xGB.wsb` Starts with vGPU enabled and Networking disabled.
-`Run-vGPU-Net-xGB.wsb` Starts with vGPU and Networking enabled.
-
 Clipboard redirection is always on.
 
 ## Attributions for third-party code
