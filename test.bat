@@ -1,0 +1,1 @@
+set WSBGENPROG="start" 
