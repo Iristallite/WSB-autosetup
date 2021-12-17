@@ -1,15 +1,15 @@
 <Configuration>
- <vGPU>Enable</vGPU>
- <Networking>Enable</Networking>
+ <vGPU>WSBVGPU</vGPU>
+ <Networking>WSBNET</Networking>
  <AudioInput>Disable</AudioInput>
  <VideoInput>Disable</VideoInput>
  <ProtectedClient>Disable</ProtectedClient>
  <PrinterRedirection>Disable</PrinterRedirection>
  <ClipboardRedirection>Enable</ClipboardRedirection>
- <MemoryInMB>8192</MemoryInMB>
+ <MemoryInMB>WSBRAM</MemoryInMB>
  <MappedFolders>
   <MappedFolder>
-   <HostFolder>C:\Users\USERNAME\Documents\GitHub\WSB-autosetup</HostFolder>
+   <HostFolder>C:\Users\WSBUSERNAME\Documents\GitHub\WSB-autosetup</HostFolder>
    <SandboxFolder>C:\WSB-autosetup</SandboxFolder>
    <ReadOnly>True</ReadOnly>
   </MappedFolder>
