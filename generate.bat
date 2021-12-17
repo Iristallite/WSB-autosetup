@@ -1,4 +1,3 @@
-@echo off
-pause
-set 1="start"
+@echo on
+set WSBGENPROG=start
 generator.bat

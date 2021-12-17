@@ -1,5 +1,6 @@
-@echo off
-if %1% geq 1 goto Restart else if %1%="start" goto Main else goto Error
+@echo on
+if %WSBGENPROG% geq 1 goto Restart else if %WSBGENPROG%="start" goto Main else goto Error
+
 :Main
 dir /w C:\Users
 set /p WSBUSERNAME="Type the folder that looks most like your username: "
@@ -11,20 +12,28 @@ echo How much RAM (in MB) do you want to allow the Sandbox to consume?
 set /p WSBRAM="Maximum RAM in MB: "
 if exist temp rmdir temp temp else mkdir temp 
 :: Set variable
-echo set 1="3" >> generate.bat
+del generate.bat
+echo @echo off >> generate.bat
+echo set WSBGENPROG="3" >> generate.bat
 echo generator.bat >> generate.bat
 :Breakoff1
 BatchSubstitute.bat "WSBUSERNAME" %WSBUSERNAME% ungenerated.wsb >> temp\temp.wsb
 :Breakoff2
-echo set 1="2" >> generate.bat
+del generate.bat
+echo @echo off >> generate.bat
+echo set WSBGENPROG="2" >> generate.bat
 echo generator.bat >> generate.bat
 BatchSubstitute.bat "WSBVGPU" %WSBVGPU% temp\temp.wsb >> temp\temp2.wsb
 :Breakoff3
-echo set 1="1" >> generate.bat
+del generate.bat
+echo @echo off >> generate.bat
+echo set WSBGENPROG="1" >> generate.bat
 echo generator.bat >> generate.bat
 BatchSubstitute.bat "WSBNET" %WSBNET% temp\temp2.wsb >> temp\temp3.wsb
 :Breakoff4
-echo set 1="done" >> generate.bat
+del generate.bat
+echo @echo off >> generate.bat
+echo set WSBGENPROG="done" >> generate.bat
 echo generator.bat >> generate.bat
 BatchSubstitute.bat "WSBRAM" %WSBRAM% temp\temp3.wsb >> temp\temp4.wsb
 :CompleteCopy
@@ -32,7 +41,7 @@ copy temp\temp4.wsb .\
 rmdir temp
 del generate.bat
 echo @echo off >> generate.bat
-echo set 1="start" >> generate.bat
+echo set WSBGENPROG="start" >> generate.bat
 echo generator.bat >> generate.bat
 if %WSBVGPU%=ENABLE set FNVGPU="vGPU-" else set FNVGPU=""
 if %WSBNET%=ENABLE set FNNET="Net-" else set FNNET=""
@@ -47,10 +56,10 @@ exit
 del generate.bat
 echo @echo off >> generate.bat
 echo set 
-echo The script needs to restart %1% more times to complete generating the WSB file.
+echo The script needs to restart %WSBGENPROG% more times to complete generating the WSB file.
 echo After the script exits, run generate.bat to continue
 pause
-if %1%=3 goto Breakoff2 else if %1%=2 goto Breakoff3 else if %1%=1 goto Breakoff4 else if %1%=done goto CompleteCopy else goto errorlevel
+if %WSBGENPROG%=3 goto Breakoff2 else if %WSBGENPROG%=2 goto Breakoff3 else if %WSBGENPROG%=1 goto Breakoff4 else if %WSBGENPROG%=done goto CompleteCopy else goto errorlevel
 
 :Error
 echo THE SCRIPT BROKE
