@@ -2,18 +2,16 @@
 if %WSBGENPROG% gtr 00 goto Restart else goto Main
 
 :Main
-:: dir C:\Users
-:: set /p WSBUSERNAME="Type the folder that corresponds to your username: "
-:: echo Do you want vGPU ENABLE or DISABLE?
-:: set /p WSBVGPU="vGPU: "
-:: echo Do you want Networking ENABLE or DISABLE?
-:: set /p WSBNET="Networking: "
-:: echo How much RAM (in MB) do you want to allow the Sandbox to consume?
-:: set /p WSBRAM="Maximum RAM in MB: "
-set WSBUSERNAME=Nordii
-set WSBVGPU=ENABLE
-set WSBNET=DISABLE
-set WSBRAM=8192
+dir C:\Users
+set /p WSBUSERNAME="Type the folder that corresponds to your username: "
+echo Do you want vGPU enabled or disabled?
+echo Type "Enable" or "Disable"
+set /p WSBVGPU="vGPU: "
+echo Do you want Networking enabled or disabled?
+echo Type "Enable" or "Disable"
+set /p WSBNET="Networking: "
+echo How much RAM (in MB) do you want to allow the Sandbox to consume?
+set /p WSBRAM="Maximum RAM in MB: "
 
 :SetVar
 call :regenerate-generate
@@ -52,8 +50,8 @@ BatchSubstitute.bat "WSBRAM" %WSBRAM% temp3.wsb>temp4.wsb
 copy temp\temp4.wsb .\
 del /f temp\*.wsb
 call :clean-generate
-if %WSBVGPU% equ ENABLE set FNVGPU=vGPU- else set FNVGPU=
-if %WSBNET% equ ENABLE set FNNET=Net- else set FNNET=
+if %WSBVGPU% equ ENABLE (set FNVGPU=vGPU-) else set FNVGPU=
+if %WSBNET% equ ENABLE (set FNNET=Net-) else set FNNET=
 rename temp4.wsb "Run-%FNVGPU%%FNNET%%WSBRAM%MB.wsb"
 set WSBFILENAME=Run-%FNVGPU%%FNNET%%WSBRAM%MB.wsb
 
