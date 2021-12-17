@@ -52,8 +52,8 @@ BatchSubstitute.bat "WSBRAM" %WSBRAM% temp3.wsb>temp4.wsb
 copy temp\temp4.wsb .\
 del /f temp\*.wsb
 call :clean-generate
-if %WSBVGPU%=ENABLE set FNVGPU=vGPU- else set FNVGPU=
-if %WSBNET%=ENABLE set FNNET=Net- else set FNNET=
+if %WSBVGPU% equ ENABLE set FNVGPU=vGPU- else set FNVGPU=
+if %WSBNET% equ ENABLE set FNNET=Net- else set FNNET=
 rename temp4.wsb "Run-%FNVGPU%%FNNET%%WSBRAM%MB.wsb"
 set WSBFILENAME=Run-%FNVGPU%%FNNET%%WSBRAM%MB.wsb
 
