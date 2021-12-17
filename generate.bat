@@ -1,7 +1,20 @@
 @echo off
 dir /w C:\Users
 set /p id="Type the folder that looks most like your username: "
-BatchSubstitute.bat "USERNAME" %id% >> C:\Users\%id%\Documents\GitHub\WSB-autosetup\*GB\*.wsb
+cd 2GB
+..\BatchSubstitute.bat "USERNAME" %id% >> *.wsb
+cd..
+cd 4GB
+..\BatchSubstitute.bat "USERNAME" %id% >> *.wsb
+cd..
+cd 6GB
+..\BatchSubstitute.bat "USERNAME" %id% >> *.wsb
+cd..
+cd 8GB
+..\BatchSubstitute.bat "USERNAME" %id% >> *.wsb
+echo WSB files generated succesfully.
+pause
+exit
 :: BatchSubstitute.bat "USERNAME" %id% C:\Users\%id%\Documents\GitHub\WSB-autosetup\2GB
 :: BatchSubstitute.bat "USERNAME" %id% C:\Users\%id%\Documents\GitHub\WSB-autosetup\2GB
 :: BatchSubstitute.bat "USERNAME" %id% C:\Users\%id%\Documents\GitHub\WSB-autosetup\2GB
