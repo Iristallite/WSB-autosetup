@@ -1,5 +1,5 @@
 @echo off
-if %WSBGENPROG% geq 1 goto Restart else if %WSBGENPROG%="start" goto Main else goto Error
+if %WSBGENPROG% geq 1 goto Restart else if %WSBGENPROG%=start goto Main else goto Error
 
 :Main
 dir /w C:\Users
@@ -47,12 +47,12 @@ copy temp\temp4.wsb .\
 rmdir temp
 del generate.bat
 echo @echo off>> generate.bat
-echo set WSBGENPROG="start">> generate.bat
+echo set WSBGENPROG=start>> generate.bat
 echo generator.bat>> generate.bat
-if %WSBVGPU%=ENABLE set FNVGPU="vGPU-" else set FNVGPU=""
-if %WSBNET%=ENABLE set FNNET="Net-" else set FNNET=""
+if %WSBVGPU%=ENABLE set FNVGPU=vGPU- else set FNVGPU=
+if %WSBNET%=ENABLE set FNNET=Net- else set FNNET=
 rename temp4.wsb "Run-%FNVGPU%%FNNET%%WSBRAM%MB.wsb"
-set WSBFILENAME="Run-%FNVGPU%%FNNET%%WSBRAM%MB.wsb"
+set WSBFILENAME=Run-%FNVGPU%%FNNET%%WSBRAM%MB.wsb
 :Finished
 echo WSB file generated succesfully.
 echo Filename: %WSBFILENAME%
@@ -62,7 +62,7 @@ exit
 echo The script needs to restart %WSBGENPROG% more times to complete generating the WSB file.
 echo After the script exits, run generate.bat to continue
 pause
-if %WSBGENPROG%="3" goto Breakoff2 else if %WSBGENPROG%="2" goto Breakoff3 else if %WSBGENPROG%="1" goto Breakoff4 else if %WSBGENPROG%="done" goto CompleteCopy else goto errorlevel
+if %WSBGENPROG%=3 goto Breakoff2 else if %WSBGENPROG%=2 goto Breakoff3 else if %WSBGENPROG%=1 goto Breakoff4 else if %WSBGENPROG%=done goto CompleteCopy else goto errorlevel
 
 :Error
 echo THE SCRIPT BROKE
