@@ -1,0 +1,20 @@
+<Configuration>
+ <vGPU>Enable</vGPU>
+ <Networking>Enable</Networking>
+ <AudioInput>Disable</AudioInput>
+ <VideoInput>Disable</VideoInput>
+ <ProtectedClient>Disable</ProtectedClient>
+ <PrinterRedirection>Disable</PrinterRedirection>
+ <ClipboardRedirection>Enable</ClipboardRedirection>
+ <MemoryInMB>4096</MemoryInMB>
+ <MappedFolders>
+  <MappedFolder>
+   <HostFolder>C:\Users\%USERPROFILE%\Documents\GitHub\WSB-autosetup</HostFolder>
+   <SandboxFolder>C:\WSB-autosetup</SandboxFolder>
+   <ReadOnly>True</ReadOnly>
+  </MappedFolder>
+ </MappedFolders>
+ <LogonCommand>
+  <Command>C:\WSB-autosetup\Install.bat</Command>
+ </LogonCommand>
+</Configuration>
