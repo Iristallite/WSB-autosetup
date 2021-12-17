@@ -1,1 +1,1 @@
-x=msgbox("Wait for the Visual C++ Redistributables to finish installing before doing anything else." ,48, "Instructions")
+x=msgbox("The 2015-2022 Visual C++ redistributables have been extracted and will now be installed." ,64, "Step 1/3 completed")
