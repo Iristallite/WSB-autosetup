@@ -6,7 +6,8 @@ Starts Windows Sandbox and automatically installs 2010-2022 Visual C++ Redistrib
 Recommended, makes it easier.
 1. Install GitHub Desktop
 2. Clone the repository "Nordii08/WSB-autosetup"
-3. (Optional) Create a shortcut to your preferred .wsb file wherever you'd like.
+3. Run "generate.bat" and follow the instructions
+4. (Optional) Create a shortcut to your preferred .wsb file wherever you'd like
 
 ## Instructions (Manual)
 Not recommended.
@@ -14,7 +15,8 @@ Not recommended.
 2. Create a folder called "GitHub" in your documents folder
 3. Create a folder called "WSB-autosetup" in the "GitHub" folder
 4. Extract all the files within the .zip you downloaded to the folder you created in step 3 
-5. (Optional) Create a shortcut to your preferred .wsb file wherever you'd like.
+5. Run "generate.bat" and follow the instructions
+6. (Optional) Create a shortcut to your preferred .wsb file wherever you'd like
 
 ## Glossary
 Each folder correspondsd to the max amount of RAM that will be allocated.
