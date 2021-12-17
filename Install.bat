@@ -1,6 +1,7 @@
 C:\WSB-autosetup\vbs\cpp.vbs
 :: Extract cpp folder
 C:\WSB-autosetup\cpp.exe -y -o"C:\cpp"
+C:\WSB-autosetup\vbs\cpp-finished.vbs
 :: Run VC++ x86 installers
 C:\cpp\2010x86.exe /norestart /passive
 C:\cpp\2012x86.exe /install /passive /norestart
