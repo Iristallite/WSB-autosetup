@@ -1,7 +1,3 @@
 @echo off
-set WSBUSERNAME=Nordii
-set WSBVGPU=ENABLE
-set WSBNET=DISABLE
-set WSBRAM=8192
-set WSBGENPROG=03
+set WSBGENPROG=00
 generator.bat

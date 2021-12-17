@@ -14,50 +14,55 @@ set WSBUSERNAME=Nordii
 set WSBVGPU=ENABLE
 set WSBNET=DISABLE
 set WSBRAM=8192
+
 :SetVar
 call :regenerate-generate
 echo generator.bat>> generate.bat
 set WSBGENPROG=04
 goto Restart
+
 :Breakoff1
 call :regenerate-generate
 echo set WSBGENPROG=03>> generate.bat
 echo generator.bat>> generate.bat
 BatchSubstitute.bat "WSBUSERNAME" %WSBUSERNAME% ungenerated.wsb>temp\temp.wsb
+
 :Breakoff2
 call :regenerate-generate
 echo set WSBGENPROG=02>> generate.bat
 echo generator.bat>> generate.bat
 cd temp
 BatchSubstitute.bat "WSBVGPU" %WSBVGPU% temp.wsb>temp2.wsb
+
 :Breakoff3
 call :regenerate-generate
 echo set WSBGENPROG=01>> generate.bat
 echo generator.bat>> generate.bat
 cd temp
 BatchSubstitute.bat "WSBNET" %WSBNET% temp2.wsb>temp3.wsb
+
 :Breakoff4
 call :regenerate-generate
 echo set WSBGENPROG=05>> generate.bat
 echo generator.bat>> generate.bat
 cd temp
 BatchSubstitute.bat "WSBRAM" %WSBRAM% temp3.wsb>temp4.wsb
+
 :CompleteCopy
 copy temp\temp4.wsb .\
-del temp\*.*
-del generate.bat
-echo @echo off>> generate.bat
-echo set WSBGENPROG=00>> generate.bat
-echo generator.bat>> generate.bat
+del /f temp\*.wsb
+call :clean-generate
 if %WSBVGPU%=ENABLE set FNVGPU=vGPU- else set FNVGPU=
 if %WSBNET%=ENABLE set FNNET=Net- else set FNNET=
 rename temp4.wsb "Run-%FNVGPU%%FNNET%%WSBRAM%MB.wsb"
 set WSBFILENAME=Run-%FNVGPU%%FNNET%%WSBRAM%MB.wsb
+
 :Finished
 echo WSB file generated succesfully.
 echo Filename: %WSBFILENAME%
 pause
 exit
+
 :Restart
 call :Check05
 echo The script needs to restart %WSBGENPROG% more times to complete generating the WSB file.
@@ -71,8 +76,9 @@ if %WSBGENPROG% equ 02 goto Breakoff3 else goto Check01
 :Check01
 if %WSBGENPROG% equ 01 goto Breakoff4 else goto Check05
 :Check05
-if %WSBGENPROG% equ 05 goto CompleteCopy else exit /b
+if %WSBGENPROG% equ 05 goto CompleteCopy
 exit /b
+
 :Error
 echo THE SCRIPT BROKE
 echo (this will need manual troubleshooting...)
@@ -86,3 +92,11 @@ echo set WSBUSERNAME=%WSBUSERNAME%>> generate.bat
 echo set WSBVGPU=%WSBVGPU%>> generate.bat
 echo set WSBNET=%WSBNET%>> generate.bat
 echo set WSBRAM=%WSBRAM%>> generate.bat
+exit /b
+
+:clean-generate
+del generate.bat
+echo @echo off>> generate.bat
+echo set WSBGENPROG=00>> generate.bat
+echo generator.bat>> generate.bat
+exit /b
