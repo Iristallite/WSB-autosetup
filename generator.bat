@@ -1,4 +1,4 @@
-@echo off
+@echo on
 if %WSBGENPROG% gtr 0 goto Restart else goto Main
 
 :Main
