@@ -1,5 +1,5 @@
 @echo off
-if %1% geq 1 goto Restart else if %1%=start goto Main else goto Error
+if %1% geq 1 goto Restart else if %1%="start" goto Main else goto Error
 :Main
 dir /w C:\Users
 set /p WSBUSERNAME="Type the folder that looks most like your username: "
@@ -10,25 +10,30 @@ set /p WSBNET="Networking: "
 echo How much RAM (in MB) do you want to allow the Sandbox to consume?
 set /p WSBRAM="Maximum RAM in MB: "
 if exist temp rmdir temp temp else mkdir temp 
-:: Separator
+:: Set variable
+echo set 1="3" > generate.bat
+echo generator.bat > generate.bat
 :Breakoff1
-echo generator.bat 4 > generate.bat
 BatchSubstitute.bat "WSBUSERNAME" %WSBUSERNAME% ungenerated.wsb >> temp\temp.wsb
 :Breakoff2
-echo generator.bat 3 > generate.bat
+echo set 1="2" > generate.bat
+echo generator.bat > generate.bat
 BatchSubstitute.bat "WSBVGPU" %WSBVGPU% temp\temp.wsb >> temp\temp2.wsb
 :Breakoff3
-echo generator.bat 2 > generate.bat
+echo set 1="1" > generate.bat
+echo generator.bat > generate.bat
 BatchSubstitute.bat "WSBNET" %WSBNET% temp\temp2.wsb >> temp\temp3.wsb
 :Breakoff4
-echo generator.bat 1 > generate.bat
+echo set 1="done" > generate.bat
+echo generator.bat > generate.bat
 BatchSubstitute.bat "WSBRAM" %WSBRAM% temp\temp3.wsb >> temp\temp4.wsb
 :CompleteCopy
 copy temp\temp4.wsb .\
 rmdir temp
 del generate.bat
 echo @echo off > generate.bat
-echo generator.bat start > generate.bat
+echo set 1="start" > generate.bat
+echo generator.bat > generate.bat
 if %WSBVGPU%=ENABLE set FNVGPU="vGPU-" else set FNVGPU=""
 if %WSBNET%=ENABLE set FNNET="Net-" else set FNNET=""
 rename temp4.wsb "Run-%FNVGPU%%FNNET%%WSBRAM%MB.wsb"
@@ -41,6 +46,7 @@ exit
 :Restart
 del generate.bat
 echo @echo off > generate.bat
+echo set 
 echo The script needs to restart %1% more times to complete generating the WSB file.
 echo After the script exits, run generate.bat to continue
 pause
