@@ -1,5 +1,5 @@
 @echo off
-if %WSBGENPROG% gtr 00 goto Restart else goto Main
+if %WSBGENPROG% gtr 00 (goto Restart) else (goto Main)
 
 :Main
 dir C:\Users
@@ -50,8 +50,8 @@ BatchSubstitute.bat "WSBRAM" %WSBRAM% temp3.wsb>temp4.wsb
 copy temp\temp4.wsb .\
 del /f temp\*.wsb
 call :clean-generate
-if %WSBVGPU% equ ENABLE (set FNVGPU=vGPU-) else set FNVGPU=
-if %WSBNET% equ ENABLE (set FNNET=Net-) else set FNNET=
+if %WSBVGPU% equ ENABLE (set FNVGPU=vGPU-) else (set FNVGPU=)
+if %WSBNET% equ ENABLE (set FNNET=Net-) else (set FNNET=)
 rename temp4.wsb "Run-%FNVGPU%%FNNET%%WSBRAM%MB.wsb"
 set WSBFILENAME=Run-%FNVGPU%%FNNET%%WSBRAM%MB.wsb
 
@@ -66,16 +66,15 @@ call :Check05
 echo The script needs to restart %WSBGENPROG% more times to complete generating the WSB file.
 echo After the script exits, run generate.bat to continue
 pause
-if %WSBGENPROG% equ 04 goto Breakoff1 else goto Check03
+if %WSBGENPROG% equ 04 (goto Breakoff1) else (goto Check03)
 :Check03
-if %WSBGENPROG% equ 03 goto Breakoff2 else goto Check02
+if %WSBGENPROG% equ 03 (goto Breakoff2) else (goto Check02)
 :Check02
-if %WSBGENPROG% equ 02 goto Breakoff3 else goto Check01
+if %WSBGENPROG% equ 02 (goto Breakoff3) else (goto Check01)
 :Check01
-if %WSBGENPROG% equ 01 goto Breakoff4 else goto Check05
+if %WSBGENPROG% equ 01 (goto Breakoff4) else (goto Check05)
 :Check05
-if %WSBGENPROG% equ 05 goto CompleteCopy
-exit /b
+if %WSBGENPROG% equ 05 (goto CompleteCopy) else (exit /b)
 
 :Error
 echo THE SCRIPT BROKE
