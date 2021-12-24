@@ -4,12 +4,20 @@ if %WSBGENPROG% gtr 00 (goto Restart) else (goto Main)
 :Main
 dir C:\Users
 set /p WSBUSERNAME="Type the folder that corresponds to your username: "
+echo.
+echo.
 echo Do you want vGPU enabled or disabled?
 echo Type "Enable" or "Disable"
+echo.
 set /p WSBVGPU="vGPU: "
+echo.
+echo.
 echo Do you want Networking enabled or disabled?
 echo Type "Enable" or "Disable"
+echo.
 set /p WSBNET="Networking: "
+echo.
+echo.
 echo How much RAM (in MB) do you want to allow the Sandbox to consume?
 set /p WSBRAM="Maximum RAM in MB: "
 
@@ -59,6 +67,7 @@ set WSBFILENAME=Run-%FNVGPU%%FNNET%%WSBRAM%MB.wsb
 :Finished
 echo WSB file generated succesfully.
 echo Filename: %WSBFILENAME%
+echo.
 pause
 exit
 
@@ -69,6 +78,7 @@ call :CheckPlural
 call :RestartCount
 echo The script needs to restart %RESTARTCOUNT% more %PLURAL% to complete generating the WSB file.
 echo After the script exits, run generate.bat again to continue.
+echo.
 pause
 if %WSBGENPROG% equ 04 (goto Breakoff1) else (if %WSBGENPROG% equ 03 (goto Breakoff2) else (if %WSBGENPROG% equ 02 (goto Breakoff3) else (if %WSBGENPROG% equ 01 (goto Breakoff4) else (goto Error))))
 
@@ -87,6 +97,7 @@ exit /b
 :Error
 echo THE SCRIPT BROKE
 echo (this will need manual troubleshooting...)
+exit.
 pause
 exit
 
