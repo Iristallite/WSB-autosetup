@@ -6,7 +6,7 @@ Generate a config file for Windows Sandbox (Also automatically installs the 2010
 ## Instructions (Github Desktop)
 Recommended, makes it easier.
 1. Install [GitHub Desktop](https://desktop.github.com)
-2. Clone the repository "Nordii08/WSB-autosetup"
+2. Clone the repository "NoriLynnfield/WSB-autosetup"
 3. Run "generate.bat" and follow the instructions
 4. (Optional) Copy or create a shortcut to the .wsb file wherever you'd like
 
