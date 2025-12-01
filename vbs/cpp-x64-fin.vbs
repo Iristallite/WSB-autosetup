@@ -1,1 +1,1 @@
-x=msgbox("64-bit 2015-2022 Visual C++ Redistributables have been installed successfully." ,64, "Step 3/3 completed")
+x=msgbox("64-bit 2005-2022 Visual C++ Redistributables have been installed successfully." ,64, "Step 3/4 completed")

@@ -1,3 +1,6 @@
+# **DISCLAIMER: I wrote this when I was 13.**
+# **I do not consider it up to my modern coding standards.**
+
 # WSB-autosetup
 # **Disclaimer: This has only been tested on Windows 11!**
 Generate a config file for Windows Sandbox (Also automatically installs the 2010-2022 Visual C++ Redistributables)

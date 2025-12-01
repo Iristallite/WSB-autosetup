@@ -1,1 +1,1 @@
-x=msgbox("The 2015-2022 Visual C++ redistributables have been extracted and will now be installed." ,64, "Step 1/3 completed")
+x=msgbox("Redistributables have been extracted and will now be installed." ,64, "Step 1/4 completed")
